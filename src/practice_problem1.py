@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  IMPLEMENTING CLASSES.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Hanyu Yang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -39,8 +39,8 @@ def main():
     # UN-comment tests as you work the problems.
     ####################################################################
 
-#     run_test_init()
-#     run_test_append_string()
+    run_test_init()
+    run_test_append_string()
 #     run_test_double()
 #     run_test_shrink()
 #     run_test_double_then_shrink()
@@ -93,8 +93,13 @@ class Box(object):
           :type contents: str
           :type volume: int
         """
+        if len(contents) > volume:
+            self.contents = ''
+        else:
+            self.contents = contents
+        self.volume = volume
         # --------------------------------------------------------------
-        # TODO: 2. Implement and test this function.
+        # DONE: 2. Implement and test this function.
         #     See the testing code (below) for more examples.
         # --------------------------------------------------------------
         # --------------------------------------------------------------
@@ -134,8 +139,28 @@ class Box(object):
         Type hints:
           :type additional_contents: str
         """
+        if len(self.contents) + len(additional_contents) > self.volume:
+            initl = len(self.contents)
+            i = 0
+            for k in range(self.volume - len(self.contents)):
+                self.contents = self.contents + additional_contents[i]
+                i = i + 1
+            s = ''
+            for k in range(initl + len(additional_contents) - self.volume):
+                s = s + additional_contents[i]
+                i = i + 1
+
+            return s
+        else:
+            i = 0
+            for k in range(len(additional_contents)):
+                self.contents = self.contents + additional_contents[i]
+                i = i + 1
+            s = ''
+            return s
+
         # --------------------------------------------------------------
-        # TODO: 3. Implement and test this function.
+        # DONE: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
         # --------------------------------------------------------------
         # --------------------------------------------------------------
